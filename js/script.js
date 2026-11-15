@@ -109,11 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !chatCaixa.hidden) { abrirChat(false); chatBotao.focus(); }
     });
-    sucesso.querySelector(".chat-nova").addEventListener("click", () => {
+    // Volta da confirmação para o formulário vazio.
+    let timerSucesso;
+    const voltaAoFormulario = () => {
+      clearTimeout(timerSucesso);
+      if (sucesso.hidden) return;
+      const focoNaConfirmacao = sucesso.contains(document.activeElement);
       sucesso.hidden = true;
       form.hidden = false;
-      form.elements.nome.focus();
-    });
+      if (focoNaConfirmacao && !chatCaixa.hidden) form.elements.nome.focus();
+    };
+    sucesso.querySelector(".chat-nova").addEventListener("click", voltaAoFormulario);
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -140,6 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
         form.hidden = true;
         sucesso.hidden = false;
         sucesso.querySelector("button").focus();
+        // A confirmação fica visível só por alguns segundos.
+        timerSucesso = setTimeout(voltaAoFormulario, 5000);
       } catch {
         mostraAviso("Não foi possível enviar agora. Tente novamente em instantes.");
       } finally {
