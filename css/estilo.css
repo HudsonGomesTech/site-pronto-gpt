@@ -319,6 +319,10 @@ body::after { width: 70vmax; height: 70vmax; right: -25vmax; bottom: -30vmax; ba
 .chat-botao { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border: 0; border-radius: 40px; cursor: pointer; color: #03131e; background: var(--ciano); font: inherit; font-weight: 800; font-size: .9rem; box-shadow: 0 10px 30px rgba(53,215,232,.3), 0 0 0 1px rgba(34,224,122,.25); transition: transform .2s, background .2s; }
 .chat-botao:hover { transform: translateY(-2px); background: var(--ciano-claro); }
 .chat-botao:focus-visible, .chat-fechar:focus-visible, .chat-enviar:focus-visible { outline: 2px solid #ffe14d; outline-offset: 3px; }
+.whatsapp-botao { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 40px; color: #fff; background: #0f7d40; font-weight: 800; font-size: .9rem; box-shadow: 0 10px 30px rgba(37,211,102,.3), 0 0 0 1px rgba(255,255,255,.12); transition: transform .2s, background .2s; }
+.whatsapp-botao:hover { transform: translateY(-2px); background: #0b6a36; }
+.whatsapp-botao:focus-visible { outline: 2px solid #ffe14d; outline-offset: 3px; }
+.whatsapp-icone { flex: none; }
 .chat-botao-icone { font-size: 1.1rem; line-height: 1; }
 .chat-botao[aria-expanded="true"] .chat-botao-texto::after { content: " ×"; }
 .chat-caixa { width: min(360px, calc(100vw - 32px)); max-height: calc(100vh - 120px); overflow-y: auto; border: 1px solid rgba(53,215,232,.3); border-radius: 18px; background: linear-gradient(160deg, rgba(13,48,32,.97), rgba(6,26,16,.98)); box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 40px rgba(34,224,122,.08); animation: sobe-aparece .35s cubic-bezier(.2,.7,.2,1) both; }
@@ -345,6 +349,6 @@ body::after { width: 70vmax; height: 70vmax; right: -25vmax; bottom: -30vmax; ba
 .chat-nova { border-width: 1px; border-style: solid; cursor: pointer; font: inherit; font-weight: 800; }
 @media (max-width: 720px) {
   .chat-contato { right: 16px; bottom: 16px; }
-  .chat-botao-texto { display: none; }
-  .chat-botao { padding: 14px; }
+  .chat-botao-texto, .whatsapp-texto { display: none; }
+  .chat-botao, .whatsapp-botao { padding: 14px; }
 }
