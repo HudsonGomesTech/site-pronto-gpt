@@ -11,3 +11,5 @@ do Pages (Settings → Variables and Secrets), no ambiente de produção:
 - `CLOUDFLARE_ACCOUNT_ID` — ID da conta
 
 Alterações nas variáveis só valem a partir do próximo deploy.
+
+Última republicação: 2026-11-15.
