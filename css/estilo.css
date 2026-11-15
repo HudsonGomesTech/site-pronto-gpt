@@ -96,14 +96,20 @@ h2 { margin: 12px 0 18px; font-size: clamp(2rem, 3.7vw, 3rem); line-height: 1.13
 .contato { background: rgba(5,23,14,.72); }
 .contato-grid { display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: 80px; }
 .contato h2 { max-width: 490px; }
-.youtube-link { display: flex; align-items: center; gap: 20px; padding: 25px; border: 1px solid rgba(53,215,232,.25); border-radius: 15px; background: rgba(10,34,22,.85); transition: border-color .2s, transform .2s; }
-.youtube-link:hover { border-color: var(--ciano); transform: translateY(-3px); }
+.youtube-link, .contato-link { display: flex; align-items: center; gap: 20px; padding: 25px; border: 1px solid rgba(53,215,232,.25); border-radius: 15px; background: rgba(10,34,22,.85); transition: border-color .2s, transform .2s; }
+.youtube-link:hover, .contato-link:hover { border-color: var(--ciano); transform: translateY(-3px); }
 .youtube-icone { display: grid; place-items: center; width: 55px; height: 42px; border-radius: 11px; color: white; background: #e63846; }
-.youtube-link span:last-child { display: flex; flex-direction: column; }
-.youtube-link small { color: var(--ciano); font-size: .64rem; font-weight: 850; letter-spacing: .12em; }
-.youtube-link strong { margin: 3px 0; font-size: 1.08rem; }
-.youtube-link em { color: #8fa6b9; font-size: .77rem; font-style: normal; }
-.youtube-link em b { color: var(--ciano); }
+.youtube-link span:last-child, .contato-link span:last-child { display: flex; flex-direction: column; }
+.youtube-link small, .contato-link small { color: var(--ciano); font-size: .64rem; font-weight: 850; letter-spacing: .12em; }
+.youtube-link strong, .contato-link strong { margin: 3px 0; font-size: 1.08rem; }
+.youtube-link em, .contato-link em { color: #8fa6b9; font-size: .77rem; font-style: normal; }
+.youtube-link em b, .contato-link em b { color: var(--ciano); }
+.contato-canais { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.contato-canais > a { padding: 18px 22px; }
+.contato-link strong { overflow-wrap: anywhere; }
+.contato-icone { flex: none; display: grid; place-items: center; width: 55px; height: 42px; border-radius: 11px; color: #fff; font-size: 1.3rem; }
+.contato-icone-whatsapp { background: #0f7d40; }
+.contato-icone-email { background: var(--ciano); color: #03131e; font-variant-emoji: text; }
 .rodape { padding: 25px 0; border-top: 1px solid var(--linha); background: #030d08; }
 .rodape-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .rodape p, .copyright { margin: 0; color: #7f93a6; font-size: .76rem; }
