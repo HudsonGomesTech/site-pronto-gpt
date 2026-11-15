@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Revela os elementos conforme aparecem na tela.
   const alvos = document.querySelectorAll(
-    ".faixa-destaques > div, .sobre-selo, .sobre-conteudo, .cabecalho-secao, .card-video, .videos-cta, .chamada-inner, .contato-grid > *"
+    ".faixa-destaques > div, .sobre-selo, .sobre-conteudo, .cabecalho-secao, .card-video, .videos-cta, .canal-card, .contato-grid > *"
   );
   if ("IntersectionObserver" in window && !reduzMovimento) {
     alvos.forEach((el) => {
