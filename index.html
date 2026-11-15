@@ -134,5 +134,34 @@
       <span class="copyright">© <span id="ano">2026</span> Hudson Gomes Tech</span>
     </div>
   </footer>
+
+  <!-- Chat de contato: botão flutuante + caixa com formulário (enviado para /api/contato) -->
+  <div class="chat-contato">
+    <button class="chat-botao" type="button" aria-expanded="false" aria-controls="chat-caixa" aria-label="Abrir chat de contato">
+      <span class="chat-botao-icone" aria-hidden="true">💬</span><span class="chat-botao-texto">Fale conosco</span>
+    </button>
+    <section id="chat-caixa" class="chat-caixa" role="dialog" aria-labelledby="chat-titulo" hidden>
+      <header class="chat-topo">
+        <div><span class="status" aria-hidden="true"></span> <strong id="chat-titulo">Mande uma mensagem</strong></div>
+        <button class="chat-fechar" type="button" aria-label="Fechar chat">×</button>
+      </header>
+      <form class="chat-form" novalidate>
+        <p class="chat-intro">Deixe seu recado que respondemos por e-mail.</p>
+        <label>Nome<input type="text" name="nome" maxlength="80" autocomplete="name" required></label>
+        <label>E-mail<input type="email" name="email" maxlength="120" autocomplete="email" required></label>
+        <label>Mensagem<textarea name="mensagem" rows="4" minlength="5" maxlength="2000" required></textarea></label>
+        <div class="chat-armadilha" aria-hidden="true">
+          <label>Site<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="chat-aviso" role="alert" hidden></p>
+        <button class="botao chat-enviar" type="submit">Enviar <span aria-hidden="true">↗</span></button>
+      </form>
+      <div class="chat-sucesso" hidden>
+        <span class="check" aria-hidden="true">✓</span>
+        <p><strong>Mensagem enviada!</strong><br>Obrigado pelo contato. Responderemos em breve.</p>
+        <button class="botao botao-contorno chat-nova" type="button">Enviar outra</button>
+      </div>
+    </section>
+  </div>
 </body>
 </html>

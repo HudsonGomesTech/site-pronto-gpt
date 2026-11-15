@@ -85,6 +85,70 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(passo, 900);
   }
 
+  // Chat de contato: abre a caixa, valida e envia para /api/contato.
+  const chatBotao = document.querySelector(".chat-botao");
+  const chatCaixa = document.querySelector("#chat-caixa");
+  if (chatBotao && chatCaixa) {
+    const form = chatCaixa.querySelector(".chat-form");
+    const aviso = chatCaixa.querySelector(".chat-aviso");
+    const sucesso = chatCaixa.querySelector(".chat-sucesso");
+    const enviar = chatCaixa.querySelector(".chat-enviar");
+    const textoEnviar = enviar.innerHTML;
+    const emailValido = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]{2,}$/;
+
+    const abrirChat = (abrir) => {
+      chatCaixa.hidden = !abrir;
+      chatBotao.setAttribute("aria-expanded", String(abrir));
+      chatBotao.setAttribute("aria-label", abrir ? "Fechar chat de contato" : "Abrir chat de contato");
+      if (abrir) (form.hidden ? sucesso.querySelector("button") : form.elements.nome).focus();
+    };
+    const mostraAviso = (texto) => { aviso.textContent = texto; aviso.hidden = !texto; };
+
+    chatBotao.addEventListener("click", () => abrirChat(chatCaixa.hidden));
+    chatCaixa.querySelector(".chat-fechar").addEventListener("click", () => { abrirChat(false); chatBotao.focus(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !chatCaixa.hidden) { abrirChat(false); chatBotao.focus(); }
+    });
+    sucesso.querySelector(".chat-nova").addEventListener("click", () => {
+      sucesso.hidden = true;
+      form.hidden = false;
+      form.elements.nome.focus();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nome = form.elements.nome.value.trim();
+      const email = form.elements.email.value.trim();
+      const mensagem = form.elements.mensagem.value.trim();
+
+      if (!nome || nome.length > 80) return mostraAviso("Informe seu nome (até 80 caracteres).");
+      if (email.length > 120 || !emailValido.test(email)) return mostraAviso("Informe um e-mail válido.");
+      if (mensagem.length < 5 || mensagem.length > 2000) return mostraAviso("A mensagem deve ter de 5 a 2000 caracteres.");
+      mostraAviso("");
+
+      enviar.disabled = true;
+      enviar.textContent = "Enviando…";
+      try {
+        const resposta = await fetch("/api/contato", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome, email, mensagem, site: form.elements.site.value }),
+        });
+        const dados = await resposta.json().catch(() => null);
+        if (!resposta.ok || !dados || !dados.ok) throw new Error("falha");
+        form.reset();
+        form.hidden = true;
+        sucesso.hidden = false;
+        sucesso.querySelector("button").focus();
+      } catch {
+        mostraAviso("Não foi possível enviar agora. Tente novamente em instantes.");
+      } finally {
+        enviar.disabled = false;
+        enviar.innerHTML = textoEnviar;
+      }
+    });
+  }
+
   // Atualiza automaticamente o ano do rodapé.
   const ano = document.querySelector("#ano");
   if (ano) ano.textContent = new Date().getFullYear();

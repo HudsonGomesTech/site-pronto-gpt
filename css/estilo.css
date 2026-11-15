@@ -311,3 +311,40 @@ body::after { width: 70vmax; height: 70vmax; right: -25vmax; bottom: -30vmax; ba
 @media (prefers-reduced-motion: reduce) {
   body::before, body::after { animation: none; }
 }
+
+/* ==========================================================
+   CHAT DE CONTATO — botão flutuante e caixa de mensagem
+   ========================================================== */
+.chat-contato { position: fixed; right: 22px; bottom: 22px; z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.chat-botao { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border: 0; border-radius: 40px; cursor: pointer; color: #03131e; background: var(--ciano); font: inherit; font-weight: 800; font-size: .9rem; box-shadow: 0 10px 30px rgba(53,215,232,.3), 0 0 0 1px rgba(34,224,122,.25); transition: transform .2s, background .2s; }
+.chat-botao:hover { transform: translateY(-2px); background: var(--ciano-claro); }
+.chat-botao:focus-visible, .chat-fechar:focus-visible, .chat-enviar:focus-visible { outline: 2px solid #ffe14d; outline-offset: 3px; }
+.chat-botao-icone { font-size: 1.1rem; line-height: 1; }
+.chat-botao[aria-expanded="true"] .chat-botao-texto::after { content: " ×"; }
+.chat-caixa { width: min(360px, calc(100vw - 32px)); max-height: calc(100vh - 120px); overflow-y: auto; border: 1px solid rgba(53,215,232,.3); border-radius: 18px; background: linear-gradient(160deg, rgba(13,48,32,.97), rgba(6,26,16,.98)); box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 40px rgba(34,224,122,.08); animation: sobe-aparece .35s cubic-bezier(.2,.7,.2,1) both; }
+.chat-caixa[hidden] { display: none; }
+.chat-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 14px 18px; border-bottom: 1px solid var(--linha); }
+.chat-topo > div { display: flex; align-items: center; gap: 10px; font-size: .95rem; }
+.chat-topo .status { display: inline-block; }
+.chat-fechar { border: 0; background: transparent; color: var(--suave); font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 2px 6px; border-radius: 6px; }
+.chat-fechar:hover { color: var(--ciano); }
+.chat-form, .chat-sucesso { display: flex; flex-direction: column; gap: 12px; padding: 16px 18px 18px; }
+.chat-intro { margin: 0; color: var(--suave); font-size: .85rem; }
+.chat-form label { display: flex; flex-direction: column; gap: 5px; color: #c4d1df; font-size: .78rem; font-weight: 700; letter-spacing: .03em; }
+.chat-form input, .chat-form textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(53,215,232,.22); border-radius: 9px; background: rgba(4,18,12,.75); color: var(--texto); font: inherit; font-size: .9rem; font-weight: 400; letter-spacing: normal; resize: vertical; transition: border-color .2s, box-shadow .2s; }
+.chat-form input:focus, .chat-form textarea:focus { outline: none; border-color: var(--ciano); box-shadow: 0 0 0 3px rgba(53,215,232,.15); }
+.chat-armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.chat-aviso { margin: 0; padding: 9px 12px; border: 1px solid rgba(255,225,77,.4); border-radius: 9px; background: rgba(255,225,77,.08); color: #ffe14d; font-size: .82rem; }
+.chat-aviso[hidden] { display: none; }
+.chat-enviar { border: 0; cursor: pointer; font: inherit; font-weight: 800; }
+.chat-enviar:disabled { opacity: .65; cursor: wait; transform: none; }
+.chat-sucesso { align-items: center; text-align: center; }
+.chat-sucesso[hidden] { display: none; }
+.chat-sucesso .check { width: 44px; height: 44px; font-size: 1.3rem; }
+.chat-sucesso p { margin: 0; color: var(--suave); font-size: .9rem; }
+.chat-nova { border-width: 1px; border-style: solid; cursor: pointer; font: inherit; font-weight: 800; }
+@media (max-width: 720px) {
+  .chat-contato { right: 16px; bottom: 16px; }
+  .chat-botao-texto { display: none; }
+  .chat-botao { padding: 14px; }
+}
