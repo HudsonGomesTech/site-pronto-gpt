@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Hudson Gomes Tech",
+  "short_name": "HG Tech",
+  "description": "Aprenda a publicar sites e montar servidores em casa com tutoriais simples, diretos e feitos para iniciantes.",
+  "lang": "pt-BR",
+  "start_url": "/?origem=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#04120c",
+  "theme_color": "#04120c",
+  "categories": ["education", "technology"],
+  "icons": [
+    { "src": "/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/img/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

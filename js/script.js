@@ -161,3 +161,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const ano = document.querySelector("#ano");
   if (ano) ano.textContent = new Date().getFullYear();
 });
+
+// Registra o service worker para o site poder ser instalado (PWA) e funcionar offline.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  });
+}
