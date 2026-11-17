@@ -1,13 +1,13 @@
 // Service worker do PWA: permite instalar o site e abri-lo mesmo sem internet.
 // Ao mudar a lista de arquivos ou a estratégia, aumente a versão abaixo.
-const VERSAO = "hgt-v1";
+const VERSAO = "hgt-v2";
 
 const ARQUIVOS_BASE = [
   "/",
   "/css/estilo.css",
   "/js/script.js",
   "/manifest.webmanifest",
-  "/img/favicon.svg",
+  "/img/icons/favicon-32.png",
   "/img/servidor.svg",
   "/img/servidor-card.svg",
   "/img/site.svg",
