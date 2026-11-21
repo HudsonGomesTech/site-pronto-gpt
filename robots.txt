@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hudsongomestech.com.br/sitemap.xml
